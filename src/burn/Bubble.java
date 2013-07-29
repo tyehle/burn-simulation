@@ -14,4 +14,14 @@ public class Bubble
         position = p;
         radius = r;
     }
+
+    public Position getPosition()
+    {
+        return position;
+    }
+
+    public double getRadius()
+    {
+        return radius;
+    }
 }
