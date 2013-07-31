@@ -6,11 +6,11 @@ package burn;
  */
 public class Core
 {
-    private double diameter;
+    private double radius;
     
     public Core(double diameter)
     {
-        this.diameter = diameter;
+        this.radius = diameter / 2;
     }
     
     /**
@@ -34,7 +34,18 @@ public class Core
      */
     public double getIgnitionTime(Bubble b, double burnRate)
     {
-        double d = getDistance(b.getPosition()) - diameter - b.getRadius();
+        double d = getDistance(b.getPosition()) - radius - b.getRadius(0, burnRate);
         return d / burnRate;
+    }
+    
+    public double getVolume(double time, double height, double burnRate)
+    {
+        double r = radius + burnRate * time;
+        return Math.PI * r * r * height;
+    }
+
+    double getRadius()
+    {
+        return radius;
     }
 }
